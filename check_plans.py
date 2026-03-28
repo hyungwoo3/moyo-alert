@@ -7,7 +7,7 @@ TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 MIN_DATA_GB = 7
-MAX_PRICE   = 3000
+MAX_PRICE   = 4000
 
 URL = (
     "https://www.moyoplan.com/plans"
