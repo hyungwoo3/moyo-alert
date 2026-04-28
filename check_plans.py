@@ -66,7 +66,9 @@ def fetch_plans():
 def filter_plans(plans):
     return [
         p for p in plans
-        if p["data_gb"] >= MIN_DATA_GB and p["price"] <= MAX_PRICE
+        if p["data_gb"] >= MIN_DATA_GB
+        and p["price"] <= MAX_PRICE
+        and not any(kw in p["raw"] for kw in AD_KEYWORDS)
     ]
 
 def send_telegram(message: str):
