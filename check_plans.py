@@ -13,6 +13,8 @@ MAX_PRICE   = 3000
 
 SENT_LOG = "sent_log.json"
 
+AD_KEYWORDS = ["이번 달 인기 혜택", "모요 단독 핫딜"]
+
 URL = (
     "https://www.moyoplan.com/plans"
     "?excludeDiscount=9999-9999"
@@ -60,6 +62,7 @@ def fetch_plans():
             "price": price,
             "data_gb": data_gb,
             "link": link,
+            "raw": text,
         })
     return plans
 
@@ -104,7 +107,6 @@ def main():
     today = str(date.today())
     print(f"[INFO] 크롤링 시작 (조건: {MIN_DATA_GB}GB 이상 / {MAX_PRICE:,}원 이하)")
 
-    # 오늘 이미 알림 보냈는지 확인
     log = load_sent_log()
     if log.get("last_sent") == today:
         print("[INFO] 오늘 이미 알림 보냄 → 스킵")
